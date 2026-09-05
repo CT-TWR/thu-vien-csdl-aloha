@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <!-- Khai báo tệp manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Định dạng Viewport chuẩn -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Cấu hình chế độ toàn màn hình cho iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tên Ngắn App">
+
+<!-- Icon hiển thị trên màn hình chính của iOS -->
+<link rel="apple-touch-icon" href="icon-192.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư viện CSDL Số ĐKSKL Cần Thơ</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .iframe-container iframe {
+      position: absolute;
+      /* Giảm xuống -6px để vừa đủ giấu thanh xanh mà không che thanh header */
+      top: -8px; 
+      left: 0;
+      width: 100%;
+      /* Bù lại chiều cao tương ứng */
+      height: calc(100% + 6px); 
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iframe-container">
+    <iframe src="https://script.google.com/macros/s/AKfycbyYHwRhvKn3Pe3YktNClzJBhrg5J6MgwHxm05hIWdBC7tzHU-SBL91-m8tQyvZgYrOP/exec" allow="geolocation; microphone; camera"></iframe>
+  </div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((registration) => {
+          console.log('Service Worker đã đăng ký thành công:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Lỗi đăng ký Service Worker:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>
